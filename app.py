@@ -21,7 +21,7 @@ def main():
     else:
         # ---------- Sidebar Navigation ----------
         with st.sidebar:
-            st.markdown(f"**👤 Welcome, {st.session_state.username} ({st.session_state.role})**")
+            st.markdown(f"**👤 Welcome, {st.session_state.username}**")
             
             # Role-based Menu
             menu_options = ["Dashboard", "All Queries", "Reports"]
