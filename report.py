@@ -32,7 +32,7 @@ def run():
 
         df_filtered = filter_queries(df, role, username)
 
-        st.subheader(f"Hello, {role}")
+        st.subheader(f"Hello, {username}")
         st.info("Select a report below to export as CSV:")
 
         all_queries = df_filtered
