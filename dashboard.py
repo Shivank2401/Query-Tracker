@@ -51,10 +51,6 @@ def run():
     # Add spacing after first row
     st.markdown("<div style='margin-top:30px;'></div>", unsafe_allow_html=True)
 
-    # 2nd row: Safe, Critical, Warning Alert Type
-    st.title("📊 My Queries")
-    st.markdown("<div style='margin-top:30px;'></div>", unsafe_allow_html=True)
-
     # 2nd row: Safe, Critical, Warning Alert Type (For Logged-In User Only)
     username = st.session_state.get("username", None)
     if username:
