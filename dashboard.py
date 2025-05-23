@@ -37,7 +37,7 @@ def run():
 
 
     # Top row: Total, Open, Closed, In Progress
-    st.title("📊 Overall Queries")
+    st.title("🤓 Overall Queries")
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         metric_box("Total Queries", len(df), "#22577a")  # Blue
@@ -58,7 +58,7 @@ def run():
     else:
         user_df = pd.DataFrame()  # Empty DataFrame if no user is logged in
 
-    st.title("📊 My Queries")
+    st.title("👤 My Queries")
     col5, col6, col7 = st.columns(3)
     with col5:
         metric_box("🟢 Safe", user_df['Alert Type'].eq('Safe').sum(), "#2E8B57")
