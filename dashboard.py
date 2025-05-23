@@ -37,6 +37,7 @@ def run():
 
 
     # Top row: Total, Open, Closed, In Progress
+    st.title("📊 Overall Queries")
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         metric_box("Total Queries", len(df), "#22577a")  # Blue
@@ -51,13 +52,24 @@ def run():
     st.markdown("<div style='margin-top:30px;'></div>", unsafe_allow_html=True)
 
     # 2nd row: Safe, Critical, Warning Alert Type
+    st.title("📊 My Queries")
+    st.markdown("<div style='margin-top:30px;'></div>", unsafe_allow_html=True)
+
+    # 2nd row: Safe, Critical, Warning Alert Type (For Logged-In User Only)
+    username = st.session_state.get("username", None)
+    if username:
+        user_df = df[df["Query Assigned To"] == username]
+    else:
+        user_df = pd.DataFrame()  # Empty DataFrame if no user is logged in
+
+    st.title("📊 My Queries")
     col5, col6, col7 = st.columns(3)
     with col5:
-        metric_box("🟢 Safe", df['Alert Type'].eq('Safe').sum(), "#2E8B57")  # SeaGreen
+        metric_box("🟢 Safe", user_df['Alert Type'].eq('Safe').sum(), "#2E8B57")
     with col6:
-        metric_box("🔴 Critical", df['Alert Type'].eq('Critical').sum(), "#B22222")  # FireBrick Red
+        metric_box("🔴 Critical", user_df['Alert Type'].eq('Critical').sum(), "#B22222")
     with col7:
-        metric_box("🟠 Warning", df['Alert Type'].eq('Warning').sum(), "#FF8C00")  # DarkOrange
+        metric_box("🟠 Warning", user_df['Alert Type'].eq('Warning').sum(), "#FF8C00")
 
     # Add spacing after second row
     st.markdown("<div style='margin-top:40px;'></div>", unsafe_allow_html=True)
