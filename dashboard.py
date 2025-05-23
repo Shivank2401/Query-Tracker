@@ -16,7 +16,7 @@ def run():
     # Convert date column upfront
     df['Date & Time Added'] = pd.to_datetime(df['Date & Time Added'], errors='coerce')
 
-    def metric_box(label, value, bg_color, text_color="white", width="250px"):
+    def metric_box(label, value, bg_color, text_color="white", width="200px"):
         box_html = f"""
         <div style="
             background-color: {bg_color};
